@@ -2,6 +2,10 @@ import dj_database_url
 import os
 
 from environs import Env
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 env = Env()
 env.read_env()
@@ -9,11 +13,11 @@ env.read_env()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [])
+ALLOWED_HOSTS = []
 
-SECRET_KEY = env.str('SECRET_KEY', 'REPLACE_ME')
+SECRET_KEY = os.getenv('SECRET_KEY', 'REPLACE_ME')
 
-DEBUG = env.bool('DEBUG', True)
+DEBUG = os.getenv('DEBUG', 'true').lower() in ['yes', '1', 'true']
 
 
 # Application definition
