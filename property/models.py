@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-BUILDING_TYPES = ((True, 'Новостройка'), (False, 'Старое здание'), (None, 'Неизвестно'))
+BUILDING_TYPES = ((True, 'Да'), (False, 'Нет'))
 
 class Flat(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
