@@ -44,7 +44,14 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
-    
+
+    likes_num = models.ManyToManyField(
+        User,
+        verbose_name='Кто-то лайкнул:',
+        related_name="liked_ads",
+        null=True,
+        blank=True)
+
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now,
