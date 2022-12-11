@@ -64,7 +64,7 @@ class Flat(models.Model):
     likes_num = models.ManyToManyField(
         User,
         verbose_name='Кто-то лайкнул:',
-        related_name="liked_ads",
+        related_name='liked_ads',
         null=True,
         blank=True)
 
@@ -92,4 +92,21 @@ class Complaint(models.Model):
     text = models.TextField(
         verbose_name='Текст жалобы:',
         null=True
+    )
+
+
+class Owner(models.Model):
+    owner_name = models.CharField(
+        'ФИО владельца',
+        max_length=200)
+    owners_phonenumber = models.CharField(
+        'Номер владельца',
+        max_length=20)
+    owners_pure_phone = PhoneNumberField(
+        'Нормализованный номер владельца',
+        blank=True)
+    flats = models.ManyToManyField(
+        Flat,
+        verbose_name='Квартиры в собственности',
+        related_name='flats'
     )
