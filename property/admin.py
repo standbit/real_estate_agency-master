@@ -29,4 +29,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(Owner)
 class AuthorAdmin(admin.ModelAdmin):
+    list_display = (
+        'owner_name',)
+    search_fields = ['owner_name']
     raw_id_fields = ('flats',)
